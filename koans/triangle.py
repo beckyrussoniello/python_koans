@@ -17,6 +17,12 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
+    if min([a, b, c]) <= 0:
+        raise TriangleError("Side lengths must be greater than zero")
+
+    sorted_lengths = sorted([a, b, c])
+    if sorted_lengths[0] + sorted_lengths[1] <= sorted_lengths[2]:
+        raise TriangleError("No side can be longer than the sum of the other two sides")
     # My first solution:
     #if unique_side_lengths == 1:
     #    return 'equilateral'
@@ -24,6 +30,7 @@ def triangle(a, b, c):
     #    return 'isosceles'
     #else:
     #    return 'scalene'
+
     # Second solution - may be more Pythonic?
     triangle_types = {
         1: 'equilateral',
